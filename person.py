@@ -23,9 +23,9 @@ class Person(object):
         # Set their properties to show this
         # TODO: The method Should return a Boolean showing if they survived.
 
-        random_survival_probability = random.uniform(0.0, 1.0)
+        random_survival_chance = random.uniform(0.0, 1.0)
         # >>> check how to access mortality rate once infect newly infected is completed
-        if random_survival_probability < self.infection.mortality_rate: 
+        if random_survival_chance < self.infection.mortality_rate: 
             self.is_alive = False
             self.is_infected = False
             return False

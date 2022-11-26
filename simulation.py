@@ -95,8 +95,10 @@ class Simulation(object):
                     random_person = self.population_list[random.randint(0, len(self.population_list) - 1)]
                     if random_person.is_alive == True:
                         random_living_person = random_person
-                        self. interaction(person, random_living_person)
+                        self.interaction(person, random_living_person)
                         person_counter += 1
+            # >>>>>>>>>THIS WILL CREATE AN INFINITE LOOP IF THERE ARE FEWER THAN 100 PEOPLE ALIVE!!! 
+            # >>>>>>>>>CHECK THAT THERE ARE MORE THAN 100 PEOPLE ALIVE BEFORE STARTING THIS LOOP
 
 
 
@@ -113,8 +115,13 @@ class Simulation(object):
             #     than repro_rate, add that person to the newly infected array
             #     Simulation object's newly_infected array, so that their infected
             #     attribute can be changed to True at the end of the time step.
+        if random_living_person.infection == None and random_living_person.is_vaccinated == False:
+            random_infection_chance = random.uniform(0.0, 1.0)
+            if random_infection_chance < self.virus.repro_rate:
+                self.newly_infected.append(random_living_person)
+
         # TODO: Call logger method during this method.
-        pass
+     
 
     def _infect_newly_infected(self):
         # TODO: Call this method at the end of every time step and infect each Person.
