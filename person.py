@@ -5,10 +5,10 @@ from virus import Virus
 
 class Person(object):
     # Define a person. 
-    def __init__(self, _id, is_vaccinated, is_infected = None):
+    def __init__(self, _id, is_vaccinated, infection = None):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated
-        self.is_infected = is_infected
+        self.infection = infection
         # >>> my additions:
         self.is_alive = True
  

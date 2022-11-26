@@ -21,31 +21,30 @@ class Simulation(object):
         # return it storing it in an attribute here. 
         # TODO: Call self._create_population() and pass in the correct parameters.
         # >>>
-        self.population_list = list()
-        
-        self.population_list = self._create_population(self.pop_size, self.vacc_percentage, self.initial_infected)
+        self.population_list = self._create_population()
+        self.newly_infected = []
 
-    def _create_population(self, population_size, vaccinated_percentage, initial_num_infected_people):
-        population_list = list()
+    def _create_population(self):
+        """Creates a list of people, the correct percentage of whom are vaccinated or infected."""
+        population_list = []
         i = 1
-        while i <= population_size:
-            # Add the people initially infected to the population list - Person( self, _id, is_vaccinated, is_infected)
-            while i < initial_num_infected_people:
-                person = Person(i, False, True )
-                self.population_list.append(person)
+        while i <= self.pop_size:
+            # Add the people initially infected to the population list - Person( self, _id, is_vaccinated, infection)
+            while i < self.initial_infected:
+                person = Person(i, False, self.virus )
+                population_list.append(person)
                 i += 1
             # Add the people initially not infected to the population list, with the given percentage vaccinated 
-            if (i - initial_num_infected_people) <= vaccinated_percentage:
-                person = Person(i, True, False)
+            if (i - self.initial_infected) <= self.vacc_percentage:
+                person = Person(i, True, None)
             else:
-                person = Person(i, False, False)
-            self.population_list.append(person)
+                person = Person(i, False, None)
+            population_list.append(person)
             i += 1
         return population_list
 
     def _simulation_should_continue(self):
-        # This method will return a boolean indicating if the simulation 
-        # should continue. 
+        """Returns a boolean indicating if the simulation should continue."""
         # The simulation should not continue if all of the people are dead, 
         # or if all of the living people have been vaccinated. 
         # Loop over the list of people in the population. Return True
@@ -65,12 +64,10 @@ class Simulation(object):
         should_continue = True
 
         while should_continue:
-            # TODO: Increment the time_step_counter
-            # TODO: for every iteration of this loop, call self.time_step() 
-            # Call the _simulation_should_continue method to determine if 
-            # the simulation should continue
+            time_step_counter += 1
+            self.time_step()
             should_continue = self._simulation_should_continue()
-            pass
+
 
         # TODO: Write meta data to the logger. This should be starting 
         # statistics for the simulation. It should include the initial
@@ -81,7 +78,7 @@ class Simulation(object):
 
     def time_step(self):
         # This method will simulate interactions between people, calulate 
-        # new infections, and determine if vaccinations and fatalities from infections
+        # new infections, and determine vaccinations and fatalities from infections
         # The goal here is have each infected person interact with a number of other 
         # people in the population
         # TODO: Loop over your population
@@ -89,9 +86,22 @@ class Simulation(object):
         # have that person interact with 100 other living people 
         # Run interactions by calling the interaction method below. That method
         # takes the infected person and a random person
-        pass
+        
+        for person in self.population_list:
+            # For each infected person
+            if person.infection != None:
+                person_counter = 0
+                while person_counter < 100:
+                    random_person = self.population_list[random.randint(0, len(self.population_list) - 1)]
+                    if random_person.is_alive == True:
+                        random_living_person = random_person
+                        self. interaction(person, random_living_person)
+                        person_counter += 1
 
-    def interaction(self, infected_person, random_person):
+
+
+
+    def interaction(self, infected_person, random_living_person):
         # TODO: Finish this method.
         # The possible cases you'll need to cover are listed below:
             # random_person is vaccinated:
