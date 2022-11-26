@@ -5,10 +5,10 @@ from virus import Virus
 
 class Person(object):
     # Define a person. 
-    def __init__(self, _id, is_vaccinated, infection = None):
+    def __init__(self, _id, is_vaccinated, is_infected = None):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated
-        self.infection = infection
+        self.is_infected = is_infected
         # >>> my additions:
         self.is_alive = True
  
@@ -27,6 +27,7 @@ class Person(object):
         # >>> check how to access mortality rate once infect newly infected is completed
         if random_survival_probability < self.infection.mortality_rate: 
             self.is_alive = False
+            self.is_infected = False
             return False
         else:
             self.is_vaccinated = True

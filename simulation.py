@@ -20,15 +20,33 @@ class Simulation(object):
         # Use the _create_population() method to create the list and 
         # return it storing it in an attribute here. 
         # TODO: Call self._create_population() and pass in the correct parameters.
-        pass
+        # >>>
+        self.sample_population_list = list()
+        
+        self.sample_population_list = self._create_population(self.pop_size, self.vacc_percentage, self.initial_infected)
 
-    def _create_population(self):
+    def _create_population(self, population_size, vaccinated_percentage, initial_num_infected_people):
         # TODO: Create a list of people (Person instances). This list 
         # should have a total number of people equal to the pop_size. 
         # Some of these people will be uninfected and some will be infected.
         # The number of infected people should be equal to the the initial_infected
         # TODO: Return the list of people
-        pass
+        population_list = list()
+        i = 1
+        while i <= population_size:
+            # Add the people initially infected to the population list - Person( self, _id, is_vaccinated, is_infected)
+            while i < initial_num_infected_people:
+                person = Person(i, False, True )
+                self.sample_population_list.append(person)
+                i += 1
+            # Add the people initially not infected to the population list, with the given percentage vaccinated 
+            if (i - initial_num_infected_people) <= vaccinated_percentage:
+                person = Person(i, True, False)
+            else:
+                person = Person(i, False, False)
+            self.sample_population_list.append(person)
+            i += 1
+        return population_list
 
     def _simulation_should_continue(self):
         # This method will return a booleanb indicating if the simulation 
