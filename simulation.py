@@ -99,6 +99,7 @@ class Simulation(object):
                         person_counter += 1
             # >>>>>>>>>THIS WILL CREATE AN INFINITE LOOP IF THERE ARE FEWER THAN 100 PEOPLE ALIVE!!! 
             # >>>>>>>>>CHECK THAT THERE ARE MORE THAN 100 PEOPLE ALIVE BEFORE STARTING THIS LOOP
+        self._infect_newly_infected()
 
 
 
@@ -127,7 +128,9 @@ class Simulation(object):
         # TODO: Call this method at the end of every time step and infect each Person.
         # TODO: Once you have iterated through the entire list of self.newly_infected, remember
         # to reset self.newly_infected back to an empty list.
-        pass
+        for person in self.newly_infected:
+            person.infection = self.virus
+            self.newly_infected.remove(person)
 
 
 if __name__ == "__main__":
