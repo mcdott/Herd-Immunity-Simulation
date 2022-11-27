@@ -5,15 +5,15 @@ from virus import Virus
 
 class Person(object):
     # Define a person. 
-    def __init__(self, _id, is_vaccinated, infection = None):
+    def __init__(self, _id, is_vaccinated, is_infected = False):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated
-        self.infection = infection
+        self.is_infected = is_infected
         # >>> my additions:
         self.is_alive = True
  
 
-    def did_survive_infection(self):
+    def did_survive_infection(self, mortality_rate):
         # This method checks if a person survived an infection. 
         # TODO Only called if infection attribute is not None.
         # Check generate a random number between 0.0 - 1.0
@@ -25,7 +25,7 @@ class Person(object):
 
         random_survival_chance = random.uniform(0.0, 1.0)
         # >>> check how to access mortality rate once infect newly infected is completed
-        if random_survival_chance < self.infection.mortality_rate: 
+        if random_survival_chance < mortality_rate: 
             self.is_alive = False
             self.is_infected = False
             return False
