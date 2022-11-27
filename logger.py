@@ -20,15 +20,15 @@ class Logger(object):
     #   The population size, the number of living, the number of dead, the number 
     #   of vaccinated, and the number of steps to reach the end of the simulation. 
 
-    def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate,
-                       basic_repro_num):
+    def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate, repro_rate):
         # TODO: Finish this method. This line of metadata should be tab-delimited
         # it should create the text file that we will store all logs in.
         # TIP: Use 'w' mode when you open the file. For all other methods, use
         # the 'a' mode to append a new log to the end, since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+        with open(self.logfile, "w") as logger:
+            logger.write(f"Pop. size: {pop_size} \tVacc.%: {vacc_percentage} \tVirus: {virus_name} \tMort. rate: {mortality_rate} \tRepro. rate: {repro_rate}\n")
 
     def log_interactions(self, step_number, number_of_interactions, number_of_new_infections):
         # TODO: Finish this method. Think about how the booleans passed (or not passed)
@@ -46,4 +46,4 @@ class Logger(object):
     def log_time_step(self, time_step_number):
         # 
         with open(self.logfile, "a") as logger:
-             logger.write(f"Time step: {time_step_number}")
+             logger.write(f"Time step: {time_step_number}\n")

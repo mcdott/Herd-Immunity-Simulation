@@ -63,14 +63,14 @@ class Simulation(object):
         # steps the simulation has run and check if the simulation should 
         # continue at the end of each step. 
 
-        time_step_counter = 0
-        self.logger.log_time_step(time_step_counter)
+        # Writes the starting statistics to the logger file
         self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus_name, self.mortality_rate, self.repro_rate)
-
+        
+        time_step_counter = 0
         should_continue = True
         while should_continue:
             time_step_counter += 1
-            print(time_step_counter)
+            self.logger.log_time_step(time_step_counter)
             self.time_step()
             should_continue = self._simulation_should_continue()
 
@@ -107,8 +107,6 @@ class Simulation(object):
                         person_counter += 1
             # Update the infected person's properties based on the virus' mortality rate.
             # Not dying confers immunity status of vaccinated
-            print('***')
-            print(person.is_infected)
             person.did_survive_infection(self.mortality_rate)
 
 
