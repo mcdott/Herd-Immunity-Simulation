@@ -9,7 +9,11 @@ class Simulation(object):
     def __init__(self, virus, mortality_rate, pop_size, vacc_percentage, initial_infected=1):
         # TODO: Create a Logger object and bind it to self.logger.
         # Remember to call the appropriate logger method in the corresponding parts of the simulation.
-        
+        self.logger = Logger('./logfile.txt')
+        logger = open(self.logger.logfile, "w")
+        logger.write("testing...")
+
+
         self.virus = virus
         self.mortality_rate = mortality_rate
         self.pop_size = pop_size
