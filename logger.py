@@ -45,4 +45,5 @@ class Logger(object):
 
     def log_time_step(self, time_step_number):
         # 
-        pass
+        with open(self.logfile, "a") as logger:
+             logger.write(f"Time step: {time_step_number}")

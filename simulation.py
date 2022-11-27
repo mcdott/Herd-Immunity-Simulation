@@ -6,26 +6,24 @@ from virus import Virus
 
 
 class Simulation(object):
-    def __init__(self, virus, mortality_rate, pop_size, vacc_percentage, initial_infected=1):
-        # TODO: Create a Logger object and bind it to self.logger.
-        # Remember to call the appropriate logger method in the corresponding parts of the simulation.
+    """Runs the herd immunity simulation based on given inputs: virus mortality rate, population size, 
+    percentage of population vaccinated, percentage of population initially infected"""
+    def __init__(self, virus_name, repro_rate, mortality_rate, pop_size, vacc_percentage, initial_infected=1):
+        # Creates a Logger object to log the statistics at each step of the simulation
         self.logger = Logger('./logfile.txt')
-        logger = open(self.logger.logfile, "w")
-        logger.write("testing...")
+        # >>>>>
+        # logger = open(self.logger.logfile, "w")
+        # logger.write("testing...")
+        # with open(self.logger.logfile, "w") as logger:
+        #     logger.write("testing2...")
 
-
-        self.virus = virus
+        #>>>>>>>>>>>FIGURE OUT HOW TO ACCESS VIRUS ATTRIBUTES AND CLEAN THIS UP
+        self.virus_name = virus_name
+        self.repro_rate = repro_rate
         self.mortality_rate = mortality_rate
         self.pop_size = pop_size
         self.vacc_percentage = vacc_percentage
         self.initial_infected = initial_infected
-        # TODO:
-        # You need to store a list of people (Person instances)
-        # Some of these people will be infected some will not. 
-        # Use the _create_population() method to create the list and 
-        # return it storing it in an attribute here. 
-        # TODO: Call self._create_population() and pass in the correct parameters.
-        # >>>
         self.population_list = self._create_population()
         self.newly_infected = []
 
@@ -66,8 +64,10 @@ class Simulation(object):
         # continue at the end of each step. 
 
         time_step_counter = 0
-        should_continue = True
+        self.logger.log_time_step(time_step_counter)
+        self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus_name, self.mortality_rate, self.repro_rate)
 
+        should_continue = True
         while should_continue:
             time_step_counter += 1
             print(time_step_counter)
@@ -131,7 +131,7 @@ class Simulation(object):
             #     attribute can be changed to True at the end of the time step.
         if random_living_person.is_infected == False and random_living_person.is_vaccinated == False:
             random_infection_chance = random.uniform(0.0, 1.0)
-            if random_infection_chance < self.virus.repro_rate:
+            if random_infection_chance < self.repro_rate:
                 self.newly_infected.append(random_living_person)
 
         # TODO: Call logger method during this method.
@@ -149,9 +149,9 @@ class Simulation(object):
 if __name__ == "__main__":
     # Test your simulation here
     virus_name = "Sniffles"
-    repro_num = 0.5
+    repro_rate = 0.5
     mortality_rate = 0.12
-    virus = Virus(virus_name, repro_num, mortality_rate)
+    virus = Virus(virus_name, repro_rate, mortality_rate)
 
     # Set some values used by the simulation
     pop_size = 200
@@ -159,7 +159,7 @@ if __name__ == "__main__":
     initial_infected = 10
 
     # Make a new instance of the simulation
-    sim = Simulation(virus, virus.mortality_rate, pop_size, vacc_percentage, initial_infected)
+    sim = Simulation(virus.virus_name, virus.repro_rate, virus.mortality_rate, pop_size, vacc_percentage, initial_infected)
     
 
     sim.run()
