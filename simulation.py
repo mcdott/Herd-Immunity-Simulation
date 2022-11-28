@@ -76,6 +76,7 @@ class Simulation(object):
             self.logger.log_time_step(time_step_counter)
             self.time_step()
             should_continue = self._simulation_should_continue()
+            print(f"Should continue: >> {should_continue}")
 
 
         
@@ -94,6 +95,7 @@ class Simulation(object):
         # takes the infected person and a random person
         number_of_interactions = 0
         number_deceased_this_step = 0
+        number_recovered_from_infection_this_step = 0
         for person in self.population_list:
             # For each infected person, interact with 100 random people
             if person.is_infected == True:
@@ -107,14 +109,17 @@ class Simulation(object):
                         self.interaction(random_living_person)
                         number_of_interactions += 1
                         person_counter += 1
-            # Update the infected person's properties based on the virus' mortality rate.
-            # Not dying confers immunity status of vaccinated
-            person.did_survive_infection(self.mortality_rate)
-            if person.is_alive == False:
-                number_deceased_this_step += 1
+                
+                # Update the infected person's properties based on the virus' mortality rate.
+                # Not dying confers immunity status of 'is_vaccinated'
+                person.did_survive_infection(self.mortality_rate)
+                if person.is_alive == True:
+                    number_recovered_from_infection_this_step += 1
+                else:
+                    number_deceased_this_step += 1
 
 
-        self.logger.log_interactions(number_of_interactions, len(self.newly_infected), number_deceased_this_step)
+        self.logger.log_interactions(number_of_interactions, len(self.newly_infected), number_recovered_from_infection_this_step, number_deceased_this_step)
         self._infect_newly_infected()
 
 
@@ -159,8 +164,8 @@ if __name__ == "__main__":
     virus = Virus(virus_name, repro_rate, mortality_rate)
 
     # Set some values used by the simulation
-    pop_size = 200
-    vacc_percentage = 10
+    pop_size = 1000
+    vacc_percentage = 2
     initial_infected = 2
 
     # Make a new instance of the simulation

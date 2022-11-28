@@ -27,13 +27,13 @@ class Logger(object):
         with open(self.logfile, "w") as logger:
             logger.write(f"Pop. size: {pop_size} \tVaccinated %: {vacc_percentage} \tNumber Infected: {initial_infected} \tVirus: {virus_name} \tMort. rate: {mortality_rate} \tRepro. rate: {repro_rate}\n")
 
-    def log_interactions(self, number_of_interactions, number_of_new_infections, number_of_new_deaths):
+    def log_interactions(self, number_of_interactions, number_of_new_infections, number_of_recoveries, number_of_new_deaths):
         # TODO: Finish this method. Think about how the booleans passed (or not passed)
         # represent all the possible edge cases. Use the values passed along with each person,
         # along with whether they are sick or vaccinated when they interact to determine
         # exactly what happened in the interaction and create a String, and write to your logfile.
          with open(self.logfile, "a") as logger:
-            logger.write(f"Number of interactions: {number_of_interactions}\nNumber of new infections: {number_of_new_infections}\nNumber of new deaths: {number_of_new_deaths}\n") 
+            logger.write(f"Number of interactions: {number_of_interactions}\nNumber of new infections: {number_of_new_infections}\nNumber of recoveries: {number_of_recoveries}\nNumber of new deaths: {number_of_new_deaths}\n") 
 
     def log_infection_survival(self, step_number, population_count, number_of_new_fatalities):
         # TODO: Finish this method. If the person survives, did_die_from_infection
