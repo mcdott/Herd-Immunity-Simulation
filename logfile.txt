@@ -1,31 +1,31 @@
 
-Virus: Sniffles 	Mortality rate: 0.12 	Reproduction rate: 0.5
+Virus: Ebola 	Mortality rate: 0.25 	Reproduction rate: 0.7
 
 
 Step #: 	Pop. size: 	# vaccinated: 	% vaccinated: 	# infected: 
 
- 0			 1000 		vaccinated people	 2 				2
+ 0			 100000 		vaccinated people	 0.9 				10
 
 Time step: 1
-Number of interactions: 100
-Number of new infections: 52
-Number of recoveries: 1
-Number of new deaths: 0
+Number of interactions: 900
+Number of new infections: 632
+Number of recoveries: 7
+Number of new deaths: 2
 
 Time step: 2
-Number of interactions: 2600
-Number of new infections: 1227
-Number of recoveries: 21
-Number of new deaths: 5
+Number of interactions: 31800
+Number of new infections: 22365
+Number of recoveries: 240
+Number of new deaths: 78
 
 Time step: 3
-Number of interactions: 45200
-Number of new infections: 12403
-Number of recoveries: 391
-Number of new deaths: 61
+Number of interactions: 1064300
+Number of new infections: 678389
+Number of recoveries: 7863
+Number of new deaths: 2780
 
 Time step: 4
-Number of interactions: 67400
-Number of new infections: 6201
-Number of recoveries: 534
-Number of new deaths: 140
+Number of interactions: 8942700
+Number of new infections: 479113
+Number of recoveries: 64796
+Number of new deaths: 24631

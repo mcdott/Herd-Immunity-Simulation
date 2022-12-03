@@ -10,8 +10,6 @@ class Person(object):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated
         self.virus = virus
-        # self.is_infected = is_infected
-        # >>> my additions:
         self.is_alive = True
  
 
@@ -26,10 +24,8 @@ class Person(object):
         # TODO: The method Should return a Boolean showing if they survived.
 
         random_survival_chance = random.uniform(0.0, 1.0)
-        # >>>>>>>>>>>> check how to access mortality rate once infect newly infected is completed
         if random_survival_chance < self.virus.mortality_rate: 
             self.is_alive = False
-            # self.is_infected = False
             return False
         else:
             self.is_vaccinated = True

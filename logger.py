@@ -26,7 +26,6 @@ class Logger(object):
         # it should create the text file that we will store all logs in.
 
         with open(self.logfile, "w") as logger:
-            # logger.writelines([f"\nVirus: {virus_name} \tMortality rate: {mortality_rate} \tReproduction rate: {repro_rate}\n", f"\n", f"\nStep #: \tPop. size: \t# vaccinated: \t% vaccinated: \t# infected: \n", f"\n {step_number}\t\t\t {pop_size} \t\tvaccinated people\t {vacc_percentage} \t\t\t\t{initial_infected}\n"])
             logger.writelines([f"\nVirus: {virus_name} \tMortality rate: {mortality_rate} \tReproduction rate: {repro_rate}\n", f"\n", f"\nStep #: \tPop. size: \t# vaccinated: \t% vaccinated: \t# infected: \n", f"\n {step_number}\t\t\t {pop_size} \t\tvaccinated people\t {vacc_percentage} \t\t\t\t{initial_infected}\n"])
 
     def log_interactions(self, number_of_interactions, number_of_new_infections, number_of_recoveries, number_of_new_deaths):

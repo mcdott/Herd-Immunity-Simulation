@@ -8,23 +8,12 @@ from virus import Virus
 class Simulation(object):
     """Runs the herd immunity simulation based on given inputs: virus mortality rate, population size, 
     percentage of population vaccinated, percentage of population initially infected"""
-    # def __init__(self, virus_name, repro_rate, mortality_rate, pop_size, vacc_percentage, initial_infected=1):
-    def __init__(self, virus, pop_size, vacc_percentage, initial_infected=1):
+    def __init__(self, pop_size, vacc_percentage, virus, initial_infected=1):
         # Creates a Logger object to log the statistics at each step of the simulation
         self.logger = Logger('./logfile.txt')
-        # >>>>>
-        # logger = open(self.logger.logfile, "w")
-        # logger.write("testing...")
-        # with open(self.logger.logfile, "w") as logger:
-        #     logger.write("testing2...")
-
-        #>>>>>>>>>>>FIGURE OUT HOW TO ACCESS VIRUS ATTRIBUTES AND CLEAN THIS UP
-        # self.virus_name = virus_name
-        # self.repro_rate = repro_rate
-        # self.mortality_rate = mortality_rate
-        self.virus = virus
         self.pop_size = pop_size
         self.vacc_percentage = vacc_percentage
+        self.virus = virus
         self.initial_infected = initial_infected
         self.population_list = self._create_population()
         self.newly_infected = []
@@ -47,8 +36,6 @@ class Simulation(object):
             population_list.append(person)
             i += 1
 
-        # for person in population_list:
-        #     print(f"{person._id} {person.is_vaccinated} {person.is_infected}")
         return population_list
 
     def _simulation_should_continue(self):
@@ -70,7 +57,6 @@ class Simulation(object):
 
         # Writes the starting statistics to the logger file
         time_step_counter = 0
-        # self.logger.write_metadata(time_step_counter, self.pop_size, self.vacc_percentage, self.initial_infected, self.virus_name, self.mortality_rate, self.repro_rate)
         self.logger.write_metadata(time_step_counter, self.pop_size, self.vacc_percentage, self.initial_infected, self.virus.virus_name, self.virus.mortality_rate, self.virus.repro_rate)
         
         should_continue = True
@@ -159,17 +145,27 @@ class Simulation(object):
 
 if __name__ == "__main__":
     # Test your simulation here
-    virus_name = "Sniffles"
-    repro_rate = 0.5
-    mortality_rate = 0.12
-    virus = Virus(virus_name, repro_rate, mortality_rate)
+    # virus_name = "Sniffles"
+    # repro_rate = 0.5
+    # mortality_rate = 0.12
+    # virus = Virus(virus_name, repro_rate, mortality_rate)
 
     # Set some values used by the simulation
-    pop_size = 1000
-    vacc_percentage = 2
-    initial_infected = 2
+    # pop_size = 1000
+    # vacc_percentage = 2
+    # initial_infected = 2
+
+    # Take in parameters for the virus attributes and the population sample from the command line
+    parameters = sys.argv[1:]
+    pop_size = int(parameters[0])
+    vacc_percentage = float(parameters[1])
+    virus_name = str(parameters[2])
+    mortality_rate = float(parameters[3])
+    repro_rate = float(parameters[4])
+    initial_infected = int(parameters[5])
+    virus = Virus(virus_name, mortality_rate, repro_rate)
 
     # Make a new instance of the simulation
-    sim = Simulation(virus, pop_size, vacc_percentage, initial_infected)
+    sim = Simulation(pop_size, vacc_percentage, virus, initial_infected)
     
     sim.run()
