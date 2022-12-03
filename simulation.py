@@ -1,5 +1,5 @@
 import random, sys
-# random.seed(42)
+random.seed(42)
 from person import Person
 from logger import Logger
 from virus import Virus
@@ -8,7 +8,8 @@ from virus import Virus
 class Simulation(object):
     """Runs the herd immunity simulation based on given inputs: virus mortality rate, population size, 
     percentage of population vaccinated, percentage of population initially infected"""
-    def __init__(self, virus_name, repro_rate, mortality_rate, pop_size, vacc_percentage, initial_infected=1):
+    # def __init__(self, virus_name, repro_rate, mortality_rate, pop_size, vacc_percentage, initial_infected=1):
+    def __init__(self, virus, pop_size, vacc_percentage, initial_infected=1):
         # Creates a Logger object to log the statistics at each step of the simulation
         self.logger = Logger('./logfile.txt')
         # >>>>>
@@ -18,9 +19,10 @@ class Simulation(object):
         #     logger.write("testing2...")
 
         #>>>>>>>>>>>FIGURE OUT HOW TO ACCESS VIRUS ATTRIBUTES AND CLEAN THIS UP
-        self.virus_name = virus_name
-        self.repro_rate = repro_rate
-        self.mortality_rate = mortality_rate
+        # self.virus_name = virus_name
+        # self.repro_rate = repro_rate
+        # self.mortality_rate = mortality_rate
+        self.virus = virus
         self.pop_size = pop_size
         self.vacc_percentage = vacc_percentage
         self.initial_infected = initial_infected
@@ -34,14 +36,14 @@ class Simulation(object):
         while i <= self.pop_size:
             # Add the people initially infected to the population list - Person( self, _id, is_vaccinated, is_infected)
             while i < self.initial_infected:
-                person = Person(i, False, True)
+                person = Person(i, False, self.virus)
                 population_list.append(person)
                 i += 1
             # Add the people initially not infected to the population list, with the given percentage vaccinated 
             if (i - self.initial_infected) <= (self.pop_size * self.vacc_percentage / 100):
-                person = Person(i, True, False)
+                person = Person(i, True)
             else:
-                person = Person(i, False, False)
+                person = Person(i, False)
             population_list.append(person)
             i += 1
 
@@ -67,9 +69,10 @@ class Simulation(object):
         # continue at the end of each step. 
 
         # Writes the starting statistics to the logger file
-        self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.initial_infected, self.virus_name, self.mortality_rate, self.repro_rate)
-        
         time_step_counter = 0
+        # self.logger.write_metadata(time_step_counter, self.pop_size, self.vacc_percentage, self.initial_infected, self.virus_name, self.mortality_rate, self.repro_rate)
+        self.logger.write_metadata(time_step_counter, self.pop_size, self.vacc_percentage, self.initial_infected, self.virus.virus_name, self.virus.mortality_rate, self.virus.repro_rate)
+        
         should_continue = True
         while should_continue:
             time_step_counter += 1
@@ -98,11 +101,9 @@ class Simulation(object):
         number_recovered_from_infection_this_step = 0
         for person in self.population_list:
             # For each infected person, interact with 100 random people
-            if person.is_infected == True:
+            if person.virus:
                 person_counter = 0
                 while person_counter < 100:
-            # >>>>>>>>>THIS WILL CREATE AN INFINITE LOOP IF THERE ARE FEWER THAN 100 PEOPLE ALIVE!!! 
-            # >>>>>>>>>CHECK THAT THERE ARE MORE THAN 100 PEOPLE ALIVE BEFORE STARTING THIS LOOP
                     random_person = self.population_list[random.randint(0, len(self.population_list) - 1)]
                     if random_person.is_alive == True:
                         random_living_person = random_person
@@ -112,7 +113,7 @@ class Simulation(object):
                 
                 # Update the infected person's properties based on the virus' mortality rate.
                 # Not dying confers immunity status of 'is_vaccinated'
-                person.did_survive_infection(self.mortality_rate)
+                person.did_survive_infection(self.virus.mortality_rate)
                 if person.is_alive == True:
                     number_recovered_from_infection_this_step += 1
                 else:
@@ -138,9 +139,9 @@ class Simulation(object):
             #     Simulation object's newly_infected array, so that their infected
             #     attribute can be changed to True at the end of the time step.
    
-        if random_living_person.is_infected == False and random_living_person.is_vaccinated == False:
+        if random_living_person.virus == None and random_living_person.is_vaccinated == False:
             random_infection_chance = random.uniform(0.0, 1.0)
-            if random_infection_chance < self.repro_rate:
+            if random_infection_chance < self.virus.repro_rate:
                 self.newly_infected.append(random_living_person)
 
         # TODO: Call logger method during this method.
@@ -152,7 +153,7 @@ class Simulation(object):
         # TODO: Once you have iterated through the entire list of self.newly_infected, remember
         # to reset self.newly_infected back to an empty list.
         for person in self.newly_infected:
-            person.is_infected = True
+            person.virus = self.virus
             self.newly_infected.remove(person)
 
 
@@ -169,7 +170,6 @@ if __name__ == "__main__":
     initial_infected = 2
 
     # Make a new instance of the simulation
-    sim = Simulation(virus.virus_name, virus.repro_rate, virus.mortality_rate, pop_size, vacc_percentage, initial_infected)
+    sim = Simulation(virus, pop_size, vacc_percentage, initial_infected)
     
-
     sim.run()

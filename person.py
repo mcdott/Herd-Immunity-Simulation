@@ -1,14 +1,16 @@
 import random
-# random.seed(42)
+random.seed(42)
 from virus import Virus
 
 
 class Person(object):
     # Define a person. 
-    def __init__(self, _id, is_vaccinated, is_infected = False):
+    # def __init__(self, _id, is_vaccinated, is_infected = False):
+    def __init__(self, _id, is_vaccinated = False, virus=None):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated
-        self.is_infected = is_infected
+        self.virus = virus
+        # self.is_infected = is_infected
         # >>> my additions:
         self.is_alive = True
  
@@ -24,13 +26,14 @@ class Person(object):
         # TODO: The method Should return a Boolean showing if they survived.
 
         random_survival_chance = random.uniform(0.0, 1.0)
-        # >>> check how to access mortality rate once infect newly infected is completed
-        if random_survival_chance < mortality_rate: 
+        # >>>>>>>>>>>> check how to access mortality rate once infect newly infected is completed
+        if random_survival_chance < self.virus.mortality_rate: 
             self.is_alive = False
-            self.is_infected = False
+            # self.is_infected = False
             return False
         else:
             self.is_vaccinated = True
+            self.virus = None
             return True
 
 
