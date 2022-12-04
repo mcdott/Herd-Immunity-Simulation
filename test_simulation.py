@@ -9,3 +9,5 @@ def test_simulation():
     assert simulation.virus == virus
     assert simulation.initial_infected == 5
 
+# if __name__ == "__main__":
+#     test_simulation()

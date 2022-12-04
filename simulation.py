@@ -67,7 +67,7 @@ class Simulation(object):
             should_continue = self._simulation_should_continue()
             print(f"Should continue: >> {should_continue}")
 
-        self.logger.write_summary(self.pop_size, self.current_number_alive, self.total_dead, self.total_vaccinated)
+        self.logger.write_summary(time_step_counter, self.pop_size, self.current_number_alive, self.total_dead, self.total_vaccinated)
         
         # TODO: When the simulation completes you should conclude this with 
         # the logger. Send the final data to the logger. 
