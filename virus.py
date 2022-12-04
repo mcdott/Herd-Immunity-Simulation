@@ -11,7 +11,17 @@ class Virus(object):
 if __name__ == "__main__":
     # Test your virus class by making an instance and confirming 
     # it has the attributes you defined
-    virus = Virus("HIV", 0.3, 0.8)
-    assert virus.virus_name == "HIV"
-    assert virus.mortality_rate == 0.3
-    assert virus.repro_rate == 0.8
+    virus1 = Virus("HIV", 0.3, 0.8)
+    assert virus1.virus_name == "HIV"
+    assert virus1.mortality_rate == 0.3
+    assert virus1.repro_rate == 0.8
+
+    virus2 = Virus("Ebola", 0.7, 0.25)
+    assert virus2.virus_name == "Ebola"
+    assert virus2.mortality_rate == 0.7
+    assert virus2.repro_rate == 0.25
+
+    virus3 = Virus("Influenza", 0.05, 0.9)
+    assert virus3.virus_name == "Influenza"
+    assert virus3.mortality_rate == 0.05
+    assert virus3.repro_rate == 0.9
