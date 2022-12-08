@@ -39,11 +39,13 @@ class Logger(object):
         with open(self.logfile, "a") as logger:
              logger.write(f"\nTime step: {time_step_number}\n")
     
-    def write_summary(self, time_step_number, pop_size, total_living, total_dead, number_of_vaccinations):
+    def write_summary(self, time_step_number, pop_size, total_living, total_dead, number_of_vaccinations, number_of_interactions, times_a_vaccination_protected_a_person):
         why_sim_ended = "there were no remaining living people." if pop_size == total_dead else "the virus was extinguished."
         with open(self.logfile, "a") as logger:
             logger.writelines([f"\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n",
-            f"The simulation ended after {time_step_number} steps because {why_sim_ended} "])
+            f"The simulation ended after {time_step_number} steps because {why_sim_ended}\n",
+            f"Total number of interactions: {number_of_interactions}\n",
+            f"Number of times a person was protected by a vaccine: {times_a_vaccination_protected_a_person}"])
 
         with open(self.logfile, "a") as logger:
             logger.writelines([f"\n\nTotal living: {total_living} \tTotal dead: {total_dead} \tNumber of vaccinations: {number_of_vaccinations}\n",

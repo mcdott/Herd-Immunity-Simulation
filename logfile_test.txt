@@ -1,0 +1,6 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Simulation date: 2022-12-04
+
+Virus: 0 	Mortality rate: 50000 	Reproduction rate: 25
+Step Influenza		Population size: 0.05		Initial number infected: 0.9
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

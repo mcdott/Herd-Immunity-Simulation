@@ -1,0 +1,17 @@
+
+    1. What were the inputs you gave the simulation? (Population size, percent vaccinated, virus name, mortality rate, reproductive rate)
+    
+        Population size: 100000	Initial number infected: 10 Virus: Ebola Mortality rate: 0.7 Reproduction rate: 0.25
+
+    2. What percentage of the population became infected at some point before the virus burned out?
+
+        9.577% of the population became infected during the simulation.
+
+    3. What percentage of the population died from the virus?
+
+        6.665% of the population died in the simulation.
+
+    4. Out of all interactions sick individuals had during the entire simulation, how many times, in total, did a vaccination save someone from potentially becoming infected?
+
+        Total number of interactions: 957700
+        Number of times a person was protected by a vaccine: 905706

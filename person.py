@@ -5,7 +5,7 @@ from virus import Virus
 
 class Person(object):
     # Define a person. 
-    def __init__(self, _id, is_vaccinated = False, virus=None):
+    def __init__(self, _id, is_vaccinated, virus=None):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated
         self.virus = virus
@@ -13,14 +13,8 @@ class Person(object):
  
 
     def did_survive_infection(self, mortality_rate):
-        # This method checks if a person survived an infection. 
-        # TODO Only called if infection attribute is not None.
-        # Check generate a random number between 0.0 - 1.0
-        # If the number is less than the mortality rate of the 
-        # person's infection they have passed away. 
-        # Otherwise they have survived infection and they are now vaccinated. 
-        # Set their properties to show this
-        # TODO: The method Should return a Boolean showing if they survived.
+        """This method checks if a person survived an infection and are now considered vaccinated, 
+        based on the virus mortality rate.""" 
 
         random_survival_chance = random.uniform(0.0, 1.0)
         if random_survival_chance < self.virus.mortality_rate: 
@@ -30,10 +24,6 @@ class Person(object):
             self.is_vaccinated = True
             self.virus = None
             return True
-
-
-
-
 
 if __name__ == "__main__":
     # Instantiates a vaccinated person and tests their attributes
