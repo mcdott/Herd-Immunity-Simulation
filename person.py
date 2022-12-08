@@ -4,7 +4,7 @@ from virus import Virus
 
 
 class Person(object):
-    # Define a person. 
+    """ This class contains the attributes and a method to instantiate a Person for the Simulation."""
     def __init__(self, _id, is_vaccinated, virus=None):
         self._id = _id  # int
         self.is_vaccinated = is_vaccinated

@@ -2,6 +2,7 @@ from logger import Logger
 from datetime import date
 
 def test_write_metadata():
+    """Tests that the logfile contains the correct metadata content"""
     logger_file = "logfile_test.txt"
     logger = Logger(logger_file)
     logger.write_metadata("Influenza", 0.05, 0.9, 0, 50000, 25)

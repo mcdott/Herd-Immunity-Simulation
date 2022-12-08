@@ -1,5 +1,5 @@
 class Virus(object):
-    # Properties and attributes of the virus used in Simulation.
+    """ This class contains the attributes of the virus used in Simulation."""
     def __init__(self, virus_name, mortality_rate, repro_rate):
         self.virus_name = virus_name
         self.mortality_rate = mortality_rate    
