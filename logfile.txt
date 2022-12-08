@@ -1,0 +1,225 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Simulation date: 2022-12-08
+
+Virus: Ebola 	Mortality rate: 0.7 	Reproduction rate: 0.25
+Step 0		Population size: 100000		Initial number infected: 10
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Time step: 1
+Number of new infections: 10
+Number of new deaths: 5
+Number of living people: 99995
+Total number of deaths: 5
+Total number of vaccinations: 90000
+
+Time step: 2
+Number of new infections: 28
+Number of new deaths: 6
+Number of living people: 99989
+Total number of deaths: 11
+Total number of vaccinations: 90002
+
+Time step: 3
+Number of new infections: 51
+Number of new deaths: 7
+Number of living people: 99982
+Total number of deaths: 18
+Total number of vaccinations: 90011
+
+Time step: 4
+Number of new infections: 83
+Number of new deaths: 23
+Number of living people: 99959
+Total number of deaths: 41
+Total number of vaccinations: 90014
+
+Time step: 5
+Number of new infections: 134
+Number of new deaths: 30
+Number of living people: 99929
+Total number of deaths: 71
+Total number of vaccinations: 90025
+
+Time step: 6
+Number of new infections: 250
+Number of new deaths: 45
+Number of living people: 99884
+Total number of deaths: 116
+Total number of vaccinations: 90047
+
+Time step: 7
+Number of new infections: 420
+Number of new deaths: 84
+Number of living people: 99800
+Total number of deaths: 200
+Total number of vaccinations: 90086
+
+Time step: 8
+Number of new infections: 693
+Number of new deaths: 143
+Number of living people: 99657
+Total number of deaths: 343
+Total number of vaccinations: 90150
+
+Time step: 9
+Number of new infections: 1104
+Number of new deaths: 217
+Number of living people: 99440
+Total number of deaths: 560
+Total number of vaccinations: 90267
+
+Time step: 10
+Number of new infections: 1623
+Number of new deaths: 376
+Number of living people: 99064
+Total number of deaths: 936
+Total number of vaccinations: 90411
+
+Time step: 11
+Number of new infections: 2234
+Number of new deaths: 501
+Number of living people: 98563
+Total number of deaths: 1437
+Total number of vaccinations: 90645
+
+Time step: 12
+Number of new infections: 2785
+Number of new deaths: 676
+Number of living people: 97887
+Total number of deaths: 2113
+Total number of vaccinations: 90958
+
+Time step: 13
+Number of new infections: 3058
+Number of new deaths: 790
+Number of living people: 97097
+Total number of deaths: 2903
+Total number of vaccinations: 91321
+
+Time step: 14
+Number of new infections: 3025
+Number of new deaths: 877
+Number of living people: 96220
+Total number of deaths: 3780
+Total number of vaccinations: 91699
+
+Time step: 15
+Number of new infections: 2508
+Number of new deaths: 814
+Number of living people: 95406
+Total number of deaths: 4594
+Total number of vaccinations: 92039
+
+Time step: 16
+Number of new infections: 1870
+Number of new deaths: 677
+Number of living people: 94729
+Total number of deaths: 5271
+Total number of vaccinations: 92305
+
+Time step: 17
+Number of new infections: 1291
+Number of new deaths: 487
+Number of living people: 94242
+Total number of deaths: 5758
+Total number of vaccinations: 92527
+
+Time step: 18
+Number of new infections: 846
+Number of new deaths: 315
+Number of living people: 93927
+Total number of deaths: 6073
+Total number of vaccinations: 92677
+
+Time step: 19
+Number of new infections: 527
+Number of new deaths: 221
+Number of living people: 93706
+Total number of deaths: 6294
+Total number of vaccinations: 92774
+
+Time step: 20
+Number of new infections: 317
+Number of new deaths: 142
+Number of living people: 93564
+Total number of deaths: 6436
+Total number of vaccinations: 92834
+
+Time step: 21
+Number of new infections: 201
+Number of new deaths: 92
+Number of living people: 93472
+Total number of deaths: 6528
+Total number of vaccinations: 92862
+
+Time step: 22
+Number of new infections: 124
+Number of new deaths: 55
+Number of living people: 93417
+Total number of deaths: 6583
+Total number of vaccinations: 92885
+
+Time step: 23
+Number of new infections: 69
+Number of new deaths: 31
+Number of living people: 93386
+Total number of deaths: 6614
+Total number of vaccinations: 92895
+
+Time step: 24
+Number of new infections: 43
+Number of new deaths: 22
+Number of living people: 93364
+Total number of deaths: 6636
+Total number of vaccinations: 92901
+
+Time step: 25
+Number of new infections: 25
+Number of new deaths: 17
+Number of living people: 93347
+Total number of deaths: 6653
+Total number of vaccinations: 92903
+
+Time step: 26
+Number of new infections: 13
+Number of new deaths: 6
+Number of living people: 93341
+Total number of deaths: 6659
+Total number of vaccinations: 92906
+
+Time step: 27
+Number of new infections: 7
+Number of new deaths: 3
+Number of living people: 93338
+Total number of deaths: 6662
+Total number of vaccinations: 92908
+
+Time step: 28
+Number of new infections: 3
+Number of new deaths: 1
+Number of living people: 93337
+Total number of deaths: 6663
+Total number of vaccinations: 92911
+
+Time step: 29
+Number of new infections: 1
+Number of new deaths: 2
+Number of living people: 93335
+Total number of deaths: 6665
+Total number of vaccinations: 92911
+
+Time step: 30
+Number of new infections: 0
+Number of new deaths: 0
+Number of living people: 93335
+Total number of deaths: 6665
+Total number of vaccinations: 92912
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The simulation ended after 30 steps because the virus was extinguished.
+Total number of interactions: 957700
+Number of times a person was protected by a vaccine: 905706
+
+Total living: 93335 	Total dead: 6665 	Number of vaccinations: 92912
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
